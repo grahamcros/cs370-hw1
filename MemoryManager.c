@@ -76,6 +76,7 @@ int get_running_count()
     // TODO: Implement this method.
     int iters = rand();
     int NUM_ITERATIONS = get_iteration_count(iters);
+    printf("[MemoryManager] Number of Iterations: %d\n", NUM_ITERATIONS);
     int divBy13 = 0; // Number of medians divisible by 13
 
     for (int i = 0; i < NUM_ITERATIONS; i++) {
@@ -84,15 +85,16 @@ int get_running_count()
         int ARRAY_SIZE = get_arr_size(arrSize);
 
         // 2.b
-        int allocArr[ARRAY_SIZE];
-        int * allocArrPointer =  malloc(sizeof(int) * ARRAY_SIZE);
+        int INT_SIZE = sizeof(int);
+        int * allocArrPointer =  malloc(INT_SIZE * ARRAY_SIZE);
         
         // do stuff with the array
         for (int i = 0; i < ARRAY_SIZE; i++) {
             int randNum = rand();
-            allocArr[i] = randNum;
+            allocArrPointer[(i + INT_SIZE)] = randNum;
         }
-        int median = return_median(allocArr, ARRAY_SIZE);
+        
+        int median = return_median(allocArrPointer, ARRAY_SIZE);
 
         if (median % 13 == 0) {
             divBy13++;
