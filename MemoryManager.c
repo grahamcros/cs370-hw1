@@ -88,7 +88,7 @@ int get_running_count()
         int* allocArrPointer =  malloc(sizeof(int) * ARRAY_SIZE);
         
         // do stuff with the array
-        for (int i = 0; i < ARRAY_SIZE; i += 4) {
+        for (int i = 0; i < ARRAY_SIZE; i++) {
             int randNum = rand();
             allocArrPointer[(i)] = randNum;
         }
