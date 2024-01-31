@@ -85,13 +85,12 @@ int get_running_count()
         int ARRAY_SIZE = get_arr_size(arrSize);
 
         // 2.b
-        int INT_SIZE = sizeof(int);
-        int * allocArrPointer =  malloc(INT_SIZE * ARRAY_SIZE);
+        int* allocArrPointer =  malloc(sizeof(int) * ARRAY_SIZE);
         
         // do stuff with the array
-        for (int i = 0; i < ARRAY_SIZE; i++) {
+        for (int i = 0; i < ARRAY_SIZE; i += 4) {
             int randNum = rand();
-            allocArrPointer[(i + INT_SIZE)] = randNum;
+            allocArrPointer[(i)] = randNum;
         }
         
         int median = return_median(allocArrPointer, ARRAY_SIZE);
