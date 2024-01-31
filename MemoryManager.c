@@ -47,7 +47,6 @@ int get_arr_size(int rand)
     return (rand % 500) + 1000;
 }
 
-
 /**
  * This is the method that you need to implement.
  * Implement the following steps in the given order.
@@ -71,29 +70,28 @@ int get_arr_size(int rand)
  *      2.f Return the number of medians that were divisible by 13.
  *
  */
-int get_running_count()
-{
-    // TODO: Implement this method.
+int get_running_count() {
     int iters = rand();
     int NUM_ITERATIONS = get_iteration_count(iters);
-    int divBy13 = 0; // Number of medians divisible by 13
+    printf("[MemoryManager] Number of Iterations: %d\n", NUM_ITERATIONS);
+    int divBy13 = 0;
 
     for (int i = 0; i < NUM_ITERATIONS; i++) {
-        // 2.a
+        // Creates a random number and then maps it to a range using get_arr_size()
         int arrSize = rand();
         int ARRAY_SIZE = get_arr_size(arrSize);
 
-        // 2.b
-        int allocArr[ARRAY_SIZE];
-        int * allocArrPointer =  malloc(sizeof(int) * ARRAY_SIZE);
+        // Pointer to the memory allocated to each array
+        int* allocArrPointer =  (int*) malloc(sizeof(int) * ARRAY_SIZE);
         
-        // do stuff with the array
-        for (int i = 0; i < ARRAY_SIZE; i++) {
+        // Populates the array with random numbers
+        for (int j = 0; j < ARRAY_SIZE; j++) {
             int randNum = rand();
-            allocArr[i] = randNum;
+            allocArrPointer[(j)] = randNum;
         }
-        int median = return_median(allocArr, ARRAY_SIZE);
 
+        // Finds the median of the array, and increments divBy13 if the median is divisible by 13
+        int median = return_median(allocArrPointer, ARRAY_SIZE);
         if (median % 13 == 0) {
             divBy13++;
         }
